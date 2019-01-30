@@ -38,6 +38,9 @@
 #include <fcntl.h>
 #include <dlfcn.h>
 #include <stdlib.h>
+#include <unistd.h>
+
+#include <linux/input.h>
 
 #include <log/log.h>
 
@@ -57,6 +60,10 @@
 
 #ifndef EASEL_STATS_FILE
 #define EASEL_STATS_FILE "/d/mnh_sm/power_stats"
+#endif
+
+#ifndef TARGET_TAP_TO_WAKE_NODE
+#define TARGET_TAP_TO_WAKE_NODE "/dev/input/event3"
 #endif
 
 #define LINE_SIZE 128
@@ -110,6 +117,22 @@ struct stats_section system_sections[] = {
     { SYSTEM_STATES, "RPM Mode:aosd", system_stats_labels, ARRAY_SIZE(system_stats_labels) },
     { SYSTEM_STATES, "RPM Mode:cxsd", system_stats_labels, ARRAY_SIZE(system_stats_labels) },
 };
+
+void set_feature(feature_t feature, int state) {
+    switch (feature) {
+        case POWER_FEATURE_DOUBLE_TAP_TO_WAKE: {
+            int fd = open(TARGET_TAP_TO_WAKE_NODE, O_RDWR);
+            struct input_event ev;
+            ev.type = EV_SYN;
+            ev.code = SYN_CONFIG;
+            ev.value = state ? INPUT_EVENT_WAKUP_MODE_ON : INPUT_EVENT_WAKUP_MODE_OFF ;
+            write(fd, &ev, sizeof(ev));
+            close(fd);
+        } break;
+        default:
+            break;
+    }
+}
 
 static int parse_stats(const char **stat_labels, size_t num_stats,
         uint64_t *list, FILE *fp) {

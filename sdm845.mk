@@ -120,9 +120,9 @@ PRODUCT_PACKAGES += \
     android.hardware.contexthub@1.0-impl.generic \
     android.hardware.contexthub@1.0-service
 
-# Device-specific settings
+# Doze mode
 PRODUCT_PACKAGES += \
-    XiaomiParts
+    CustomDoze
 
 # Dex
 PRODUCT_DEXPREOPT_SPEED_APPS += \

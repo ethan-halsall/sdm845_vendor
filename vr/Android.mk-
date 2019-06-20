@@ -17,18 +17,12 @@ LOCAL_PATH := $(call my-dir)
 include $(CLEAR_VARS)
 
 LOCAL_HEADER_LIBRARIES := libThermal_headers libcutils_headers libhardware_headers
-LOCAL_MODULE := vr.$(TARGET_BOARD_PLATFORM)
+LOCAL_MODULE := vr.sdm845
 LOCAL_MODULE_RELATIVE_PATH := hw
-LOCAL_PROPRIETARY_MODULE := true
-LOCAL_SRC_FILES := vr.c
-
-ifeq ($(call is-board-platform-in-list,msm8998), true)
-LOCAL_SRC_FILES += vr-8998.c
-endif
-
-ifeq ($(call is-board-platform-in-list,sdm845), true)
-LOCAL_SRC_FILES += vr-845.c
-endif
+LOCAL_VENDOR_MODULE := true
+LOCAL_SRC_FILES := \
+    vr.c \
+    vr-845.c
 
 LOCAL_HEADER_LIBRARIES := libhardware_headers
 LOCAL_SHARED_LIBRARIES := liblog libcutils

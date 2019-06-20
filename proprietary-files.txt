@@ -49,7 +49,6 @@ vendor/lib64/libaudioparsers.so
 vendor/lib64/libaudioroute_ext.so
 vendor/lib64/libcsd-client.so
 vendor/lib64/libqtigef.so
-vendor/lib64/libtinycompress_vendor.so
 vendor/lib/hw/audio.primary.sdm845.so
 vendor/lib/libacdb-fts.so
 vendor/lib/libacdbloader.so
@@ -63,7 +62,6 @@ vendor/lib/libaudioparsers.so
 vendor/lib/libaudioroute_ext.so
 vendor/lib/libcsd-client.so
 vendor/lib/libqtigef.so
-vendor/lib/libtinycompress_vendor.so
 
 # Audio FX modules
 etc/permissions/audiosphere.xml
@@ -204,7 +202,6 @@ vendor/lib64/libgralloccore.so
 vendor/lib64/libgrallocutils.so
 vendor/lib64/libqseed3.so
 vendor/lib64/libsdedrm.so
-vendor/lib64/libqdMetaData.so
 vendor/lib64/libsdm-color.so
 vendor/lib64/libsdm-diag.so
 vendor/lib64/libsdm-disp-vndapis.so
@@ -222,7 +219,6 @@ vendor/lib/libgpu_tonemapper.so
 vendor/lib/libgralloccore.so
 vendor/lib/libgrallocutils.so
 vendor/lib/libqseed3.so
-vendor/lib/libqdMetaData.so
 vendor/lib/libsdedrm.so
 vendor/lib/libsdm-color.so
 vendor/lib/libsdm-diag.so
@@ -237,11 +233,9 @@ vendor/bin/hw/vendor.xiaomi.hardware.displayfeature@1.0-service
 vendor/etc/init/vendor.xiaomi.hardware.displayfeature@1.0-service.rc
 vendor/lib64/hw/displayfeature.default.so
 vendor/lib64/hw/vendor.xiaomi.hardware.displayfeature@1.0-impl.so
-vendor/lib64/libgui_vendor.so
 vendor/lib64/vendor.xiaomi.hardware.displayfeature@1.0.so
 vendor/lib/hw/displayfeature.default.so
 vendor/lib/hw/vendor.xiaomi.hardware.displayfeature@1.0-impl.so
-vendor/lib/libgui_vendor.so
 vendor/lib/vendor.xiaomi.hardware.displayfeature@1.0.so
 
 # Display postrocessing
@@ -966,14 +960,11 @@ lib/com.qualcomm.qti.wifidisplayhal@1.0.so
 lib64/libdisplayconfig.so
 lib64/libmmrtpdecoder.so
 lib64/libmmrtpencoder.so
-lib64/libqdMetaData.system.so
 lib64/libwfdclient.so
 lib64/libwfdnative.so
 lib/libdisplayconfig.so
 lib/libmmrtpdecoder.so
 lib/libmmrtpencoder.so
-lib/libqdMetaData.system.so
-lib/libwfdaac.so
 lib/libwfdavenhancements.so
 lib/libwfdcodecv4l2.so
 lib/libwfdcommonutils.so

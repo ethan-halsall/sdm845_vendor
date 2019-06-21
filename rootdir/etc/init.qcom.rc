@@ -528,6 +528,9 @@ on property:persist.vendor.ssr.enable_ramdumps=0
 
 on property:sys.boot_completed=1
 
+    # Use FIFO for UI
+    setprop sys.use_fifo_ui 1
+
     # Enable PowerHAL hint processing
     setprop vendor.powerhal.init 1
 

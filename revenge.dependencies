@@ -1,0 +1,12 @@
+ [{
+ 		"remote": "github",
+ 		"repository": "ethan-halsall/Simple-Kernel",
+ 		"target_path": "kernel/xiaomi/sdm845",
+ 		"branch": "stable"
+ 	},
+ 	{
+ 		"repository": "vendor_xiaomi_sdm845",
+ 		"target_path": "vendor/xiaomi",
+ 		"branch": "r9.0-caf"
+ 	}
+ ]

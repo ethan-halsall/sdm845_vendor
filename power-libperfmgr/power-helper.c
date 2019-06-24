@@ -50,16 +50,12 @@
 #define MASTER_STATS_FILE "/sys/power/rpmh_stats/master_stats"
 #endif
 
-#ifndef SYSTEM_STATS_FILE
-#define SYSTEM_STATS_FILE "/sys/power/system_sleep/stats"
-#endif
-
 #ifndef WLAN_STATS_FILE
 #define WLAN_STATS_FILE "/d/wlan0/power_stats"
 #endif
 
-#ifndef EASEL_STATS_FILE
-#define EASEL_STATS_FILE "/d/mnh_sm/power_stats"
+#ifndef SYSTEM_STATS_FILE
+#define SYSTEM_STATS_FILE "/sys/power/system_sleep/stats"
 #endif
 
 #ifndef TARGET_TAP_TO_WAKE_NODE
@@ -94,18 +90,6 @@ const char *wlan_stats_labels[WLAN_STATS_COUNT] = {
 
 struct stats_section wlan_sections[] = {
     { SUBSYSTEM_WLAN, "POWER DEBUG STATS", wlan_stats_labels, ARRAY_SIZE(wlan_stats_labels) },
-};
-
-const char *easel_stats_labels[EASEL_STATS_COUNT] = {
-    "Cumulative count",
-    "Cumulative duration msec",
-    "Last entry timestamp msec"
-};
-
-struct stats_section easel_sections[] = {
-    { SUBSYSTEM_EASEL,     "OFF", easel_stats_labels, ARRAY_SIZE(easel_stats_labels) },
-    { SUBSYSTEM_EASEL,  "ACTIVE", easel_stats_labels, ARRAY_SIZE(easel_stats_labels) },
-    { SUBSYSTEM_EASEL, "SUSPEND", easel_stats_labels, ARRAY_SIZE(easel_stats_labels) },
 };
 
 const char *system_stats_labels[SYSTEM_STATE_STATS_COUNT] = {
@@ -254,16 +238,6 @@ int extract_wlan_stats(uint64_t *list, size_t list_length) {
             wlan_sections, ARRAY_SIZE(wlan_sections));
 }
 
-int extract_easel_stats(uint64_t *list, size_t list_length) {
-    size_t entries_per_section = list_length / ARRAY_SIZE(easel_sections);
-    if (list_length % entries_per_section != 0) {
-        ALOGW("%s: stats list size not an even multiple of section count", __func__);
-    }
-
-    return extract_stats(list, entries_per_section, EASEL_STATS_FILE,
-            easel_sections, ARRAY_SIZE(easel_sections));
-}
-
 int extract_system_stats(uint64_t *list, size_t list_length) {
     size_t entries_per_section = list_length / ARRAY_SIZE(system_sections);
     if (list_length % entries_per_section != 0) {
@@ -273,4 +247,3 @@ int extract_system_stats(uint64_t *list, size_t list_length) {
     return extract_stats(list, entries_per_section, SYSTEM_STATS_FILE,
             system_sections, ARRAY_SIZE(system_sections));
 }
-

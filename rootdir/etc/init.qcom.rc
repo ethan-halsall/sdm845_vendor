@@ -636,6 +636,9 @@ on property:sys.boot_completed=1
     # For better screen off idle
     write /dev/cpuset/restricted/cpus "0-3"
 
+    # Enable PowerHAL hint processing
+    setprop vendor.powerhal.init 1
+
     write /dev/kmsg "Boot completed "
 
     # Reset read ahead for dm-0 and dm-1 to 512kb
